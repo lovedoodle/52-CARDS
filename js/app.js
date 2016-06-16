@@ -25,7 +25,7 @@ app.factory('cardsService', function(){
         allCards.push({suit: suits[i], rank: ranks[j], symbol: "&"+suits[i]+";", suitsIndex: i, ranksIndex: j});
       }
     }
-    console.log(allCards);
+
     return allCards;
   };
 
