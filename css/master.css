@@ -1,8 +1,10 @@
 body {
   box-sizing: border-box;
+  max-width: 1400px;
+  margin: 0 auto !important;
 }
 .cards {
-  width: 100px;
+  width: 100px !important;
   height: 150px;
   border: solid 1px #cccccc;
   border-radius: 3px;
@@ -22,6 +24,7 @@ body {
   right: 0px;
   -ms-transform: rotate(180deg); /* IE 9 */
   -webkit-transform: rotate(180deg); /* Safari */
+  -moz-transform: rotate(180deg) ;
   transform: rotate(180deg); /* Standard syntax */
 }
 

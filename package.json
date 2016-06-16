@@ -1,0 +1,19 @@
+{
+  "name": "52cards",
+  "version": "1.0.0",
+  "description": "Playing Cards is fun!",
+  "main": "index.js",
+  "author": "Jing Wait",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine": "^2.4.1",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-cli": "^1.0.0",
+    "karma-firefox-launcher": "^1.0.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-mocha": "^1.0.1",
+    "mocha": "^2.5.3"
+  }
+}
