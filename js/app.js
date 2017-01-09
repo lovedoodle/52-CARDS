@@ -3,26 +3,30 @@ var app = angular.module('52cards', ['ngMaterial', 'ngSanitize']);
 //cards controller
 app.controller('cardsCtrl', function($scope, cardsService) {
   //facing front card initially
-  $scope.facingFront = true;
+  $scope.allCardsFlipped = false;
 
   $scope.allCards = cardsService.getAllCards();
   $scope.shuffle = function() {
     $scope.allCards = cardsService.shuffle($scope.allCards);
+
   };
   $scope.ascend = function() {
     $scope.allCards = cardsService.ascend($scope.allCards);
+    _.each($scope.allCards, function(card) {
+      card.flipping = false;    
+    })
+    $scope.allCardsFlipped = false;
+
   };
   $scope.flipAll = function() {
-    $scope.facingFront = !$scope.facingFront;
+    $scope.allCardsFlipped = !$scope.allCardsFlipped;
     _.each($scope.allCards, function(card) {
-      card.flipping = $scope.facingFront;
+      card.flipping = $scope.allCardsFlipped;
     })
   };
   //flip card here
   $scope.flipCard = function(card) {
     card.flipping = !card.flipping;
-    console.log(card.flipping)
-
   }
 });
 
