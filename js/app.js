@@ -7,24 +7,30 @@ app.controller('cardsCtrl', function($scope, cardsService) {
   };
   $scope.ascend = function() {
     $scope.allCards = cardsService.ascend($scope.allCards);
+  };
+  //flip card here
+  $scope.flipCard = function(card) {
+    card.flipping = !card.flipping
+    console.log(card.flipping)
+
   }
 });
 
 // angular SERVICE
 //Cards SERVICE(getAllCards, shuffle, ascend)
 //first getAllCards function
-app.factory('cardsService', function(){
+app.factory('cardsService', function() {
   var instance = {};
 
   instance.getAllCards = function() {
     var suits = ["clubs", "spades", "hearts", "diams"];
     var ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
     var allCards = [];
-    for (i=0; i < suits.length; i++ ) {
-      for (j=0; j < ranks.length; j++) {
+    for (var i=0; i < suits.length; i++ ) {
+      for (var j=0; j < ranks.length; j++) {
         allCards.push({suit: suits[i], rank: ranks[j], symbol: "&"+suits[i]+";", suitsIndex: i, ranksIndex: j});
       }
-    }
+    };
 
     return allCards;
   };
@@ -32,8 +38,7 @@ app.factory('cardsService', function(){
 
   instance.shuffle = function(allCards) {
     return _.shuffle(allCards)
-  }
-
+  };
 
   // Ascend the cards by the order of ["clubs", "spades", "hearts", "diams"]
   instance.ascend = function(allCards) {
@@ -43,8 +48,7 @@ app.factory('cardsService', function(){
     var diams = _.sortBy(_.where(allCards, {suit: "diams"}), "ranksIndex");
 
     return allCards = clubs.concat(spades, hearts, diams);
-
-  }
+  };
 
   return instance;
-})
+});

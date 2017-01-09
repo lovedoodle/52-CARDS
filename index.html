@@ -26,29 +26,38 @@
   <body ng-controller='cardsCtrl' ng-cloak>
     <div class="" layout='row' layout-align="center center">
       <div class="">
-        <md-button class="md-raised md-primary" ng-click="shuffle()">Shuffle</md-button> <md-button class="md-raised md-primary" ng-click="ascend()">Ascend</md-button>
+        <md-button class="md-raised md-primary" ng-click="shuffle()">Shuffle</md-button>
+        <md-button class="md-raised md-primary" ng-click="ascend()">Sort Ascending</md-button>
+        <md-button class="md-raised md-primary" ng-click="ascend()">Flip</md-button>
       </div>
     </div>
     <div class="" layout='row' layout-wrap layout-align="center center">
-      <div class="cards" ng-repeat='card in allCards' ng-class='card.suit'>
-        <div class="cardWrap">
-          <div class="topLeft">
-            <span>{{card.rank}}</span><br>
-            <span ng-bind-html="card.symbol" class="suit"></span>
-
+      <div class="cardContainer" ng-repeat='card in allCards' ng-class='[card.suit, {rotate: card.flipping}]' ng-click="flipCard(card)">
+        <div class="flipper">
+          <!-- card's front -->
+          <div class="cardWrap front">
+            <div class="topLeft">
+              <span>{{card.rank}}</span><br>
+              <span ng-bind-html="card.symbol" class="suit"></span>
+            </div>
+            <div class="bottomRight">
+              <span>{{card.rank}}</span><br>
+              <span ng-bind-html="card.symbol" class="suit"></span>
+            </div>
           </div>
-          <div class="bottomRight">
-            <span>{{card.rank}}</span><br>
-            <span ng-bind-html="card.symbol" class="suit"></span>
+          <!-- card's back -->
+          <div class="back">
+            <div class="pink-back">
+              
+            </div>
           </div>
         </div>
-
 
       </div>
     </div>
     <div class="footer" layout='row' layout-align="center center">
       <p>
-        Jing Wait <i class="fa fa-copyright" aria-hidden="true">2016</i>
+        Jing Wait <i class="fa fa-copyright" aria-hidden="true">2017</i>
       </p>
     </div>
 
